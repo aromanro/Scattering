@@ -163,8 +163,8 @@ void ScatteringFrame::ConfigureVTK(const std::string& name, const std::vector<st
 	// Use columns 0 and 1 for x and y
 	line->SetInputData(table.GetPointer(), 0, 1);
 	  
-	// Make the plot green, with a width of 2.0 pixels
-	line->SetColor(0, 128, 0, 255);
+	// Make the plot red, with a width of 2.0 pixels
+	line->SetColor(255, 0, 0, 255);
 	line->SetWidth(2.0);		
 }
 
