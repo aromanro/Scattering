@@ -45,7 +45,8 @@ namespace Scattering
 			m_epsilon /= 1000. * 27.211385; //meV converted to Hartrees
 			m_rho /= 0.52917721092; // Angstroms converted to Bohrs
 
-			const double reducedMass = m1 * m2 / (m1 + m2); // I think the chart in the book uses 1 for this, if a Hydrogen atom and a heavy one are involved it's a good approximation
+			// I think the chart in the book uses 1 for this, if a Hydrogen atom and a heavy one are involved it's a good approximation
+			const double reducedMass = m1 * m2 / (m1 + m2);
 
 			// this is 1 / (hbar^2 / (2m)) = 2 m / hbar^2
 			Constant = 2. * reducedMass * 1822.888486192; // also convert the mass to have the electron mass as unit

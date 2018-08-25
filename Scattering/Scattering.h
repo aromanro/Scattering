@@ -18,7 +18,12 @@
 #include "SpecialFunctions.h"
 
 #define _USE_MATH_DEFINES
-#include <math.h>
+//#include <math.h>
+
+// you can use boost for the same purpose if spherical Bessel functions are not available
+#ifdef USE_BETTER_BESSEL
+#include <cmath>
+#endif
 
 #include <vector>
 
@@ -84,11 +89,17 @@ namespace Scattering
 			const double energyStart = energyMax / 20.;
 			const double energyStep = (energyMax - energyStart) / options.nrPoints;
 
+#ifdef USE_BETTER_BESSEL
+			const unsigned int llim = 12;
+#else
+			const unsigned int llim = 8;
+#endif
+
 			for (double E = energyStart; E <= energyMax; E += energyStep)
 			{
 				double crossSection = 0;
 
-				for (unsigned int l = 0; l <= 8; ++l)
+				for (unsigned int l = 0; l <= llim; ++l)
 				{
 					// this works, but it's not a very good approximation, we can do better
 					//const double nextVal = startVal + h * potential.DerivativeForSmallR(startR);

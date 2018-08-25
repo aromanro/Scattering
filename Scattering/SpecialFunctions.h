@@ -12,12 +12,15 @@
 
 
 #define _USE_MATH_DEFINES
-#include <math.h>
+//#include <math.h>
 
+// you can use boost for the same purpose if spherical Bessel functions are not available
+#ifdef USE_BETTER_BESSEL
+#include <cmath>
+#endif
 
 namespace SpecialFunctions
 {
-	// should I use the ones from math.h (from C++ 17 it's standard) or the boost ones?
 	// for now I'll let the ones implemented here
 	// but I should try those, as the following implementation is not ok for 'big' l
 
@@ -33,6 +36,9 @@ namespace SpecialFunctions
 	public:
 		static double j(unsigned int l, double x)
 		{
+#ifdef USE_BETTER_BESSEL
+			return std::sph_bessel(l, x);
+#else
 			/*
 			if (0 == l) return j0(x);
 			else if (1 == l) return j1(x);
@@ -58,11 +64,15 @@ namespace SpecialFunctions
 			}
 
 			return j1;
+#endif
 		}
 
 
 		static double n(unsigned int l, double x)
 		{
+#ifdef USE_BETTER_BESSEL
+			return std::sph_neumann(l, x);
+#else
 			/*
 			if (0 == l) return n0(x);
 			else if (1 == l) return n1(x);
@@ -88,6 +98,7 @@ namespace SpecialFunctions
 			}
 
 			return n1;
+#endif
 		}
 
 		/*

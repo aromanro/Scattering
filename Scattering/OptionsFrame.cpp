@@ -57,6 +57,7 @@ void OptionsFrame::CreateControls()
 	label = new wxStaticText(this, wxID_STATIC, "&Pair:", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	box->Add(label, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
 	
+	// with better Bessel functions still does not appear to work correctly for H2, so I leave this commented out for now
 	static const wxString materialStrings[] = { "H-Ne", "H-Ar", "H-Kr", "H-Xe" /*, "H2-Ar", "H2-Kr", "H2-Xe"*/ };
 
 	wxChoice* scatteringChoice = new wxChoice (this, ID_PAIR, wxDefaultPosition, wxSize(60, -1), WXSIZEOF(materialStrings), materialStrings, 0 );
