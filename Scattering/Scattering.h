@@ -74,7 +74,7 @@ namespace Scattering
 			const double rho = potential.getRho();
 			const double rho2 = rho * rho;
 
-			const double maxr = 6. * rho; // shouldn't hurt to go a little bit better than 5 as in the book
+			const double maxr = 5. * rho;
 			const double startR = 0.7 * rho;
 			const double h = (maxr - startR) / 1000; // 100 steps already give 'good' results (for the example in the book), use one order better
 			const double h2 = h * h;

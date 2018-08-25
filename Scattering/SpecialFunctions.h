@@ -111,12 +111,15 @@ namespace SpecialFunctions
 		*/
 	};
 
-
+	// Legendre polynomials, not used currently, can be used to compute differential cross section
 	class Legendre
 	{
 	public:
 		static double p(unsigned int l, double x)
 		{
+#ifdef USE_BETTER_BESSEL
+			return std::legendre(l, x);
+#else
 			if (0 == l) return 1.;
 			else if (1 == l) return x;
 
@@ -133,6 +136,7 @@ namespace SpecialFunctions
 			}
 
 			return p1;
+#endif
 		}
 	};
 
