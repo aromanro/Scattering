@@ -22,6 +22,7 @@ public:
 
 	int nrPoints;
 	int scatteringPair;
+	int nrIntegrationSteps;
 
 	static const std::vector<Scattering::ScatteringPair> scatteringPairs;
 

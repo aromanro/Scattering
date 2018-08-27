@@ -76,7 +76,7 @@ namespace Scattering
 
 			const double maxr = 5. * rho;
 			const double startR = 0.7 * rho;
-			const double h = (maxr - startR) / 1000; // 100 steps already give 'good' results (for the example in the book), use one order better
+			const double h = (maxr - startR) / options.nrIntegrationSteps; // 100 steps already give 'good' results (for the example in the book), use one order better
 			const double h2 = h * h;
 
 			const unsigned int steps = static_cast<unsigned int>(ceil((maxr - startR) / h));
@@ -90,7 +90,7 @@ namespace Scattering
 			const double energyStep = (energyMax - energyStart) / options.nrPoints;
 
 #ifdef USE_BETTER_BESSEL
-			const unsigned int llim = 12;
+			const unsigned int llim = 11;
 #else
 			const unsigned int llim = 8;
 #endif

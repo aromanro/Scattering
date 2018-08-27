@@ -11,7 +11,7 @@ const std::vector<Scattering::ScatteringPair> Options::scatteringPairs = {
 };
 
 Options::Options()
-	: nrPoints(1000), scatteringPair(2)
+	: nrPoints(1000), scatteringPair(2), nrIntegrationSteps(1000)
 {
 }
 
@@ -46,6 +46,10 @@ void Options::Load()
 	{
 		nrPoints = conf->ReadLong("/nrPoints", 1000);
 		scatteringPair = conf->ReadLong("/scatteringPair", 2);
+		nrIntegrationSteps = conf->ReadLong("/nrSteps", 1000);
+
+		if (scatteringPair < 0 || scatteringPair >= scatteringPairs.size())
+			scatteringPair = 2;
 	}
 }
 
@@ -56,6 +60,7 @@ void Options::Save()
 	{
 		conf->Write("/nrPoints", static_cast<long int>(nrPoints));
 		conf->Write("/scatteringPair", scatteringPair);
+		conf->Write("/nrSteps", static_cast<long int>(nrIntegrationSteps));
 	}
 
 	if (m_fileconfig)
