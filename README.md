@@ -2,9 +2,9 @@
 Scattering on a Lennard-Jones potential, cross-section computation.
 
 
-The description will be on: https://compphys.go.ro
+The description is on: https://compphys.go.ro/quantum-scattering/
 
-Until then, some short info:
+Some short info:
 The referred formulae are from the book
 "Computational Physics" by J M Thijssen,
 isbn: 9780521833462, https://doi.org/10.1017/CBO9781139171397,
