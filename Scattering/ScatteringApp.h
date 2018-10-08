@@ -23,5 +23,5 @@ class ScatteringApp  : public wxApp
 public:
 	ScatteringFrame * frame = nullptr;
 
-	virtual bool OnInit();
+	virtual bool OnInit() override;
 };

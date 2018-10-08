@@ -75,6 +75,8 @@ ScatteringFrame::~ScatteringFrame()
 {
 	DestroyVTK();
 	if (m_pVTKWindow) m_pVTKWindow->Delete();
+
+	currentOptions.Close();
 }
 
 void ScatteringFrame::ConstructVTK()
