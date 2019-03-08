@@ -54,9 +54,9 @@ namespace Scattering
 			double w = nextValue;
 
 			double position = nextPoint;
-			double solution = nextValue;
-
 			double funcVal = function(l, E, position);
+			double solution = (1 - h2 / 12. * funcVal) * nextValue;
+
 
 			for (unsigned int i = 0; i < steps; ++i)
 			{
