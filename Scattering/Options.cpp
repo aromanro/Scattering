@@ -11,7 +11,7 @@ const std::vector<Scattering::ScatteringPair> Options::scatteringPairs = {
 };
 
 Options::Options()
-	: nrPoints(1000), scatteringPair(2), nrIntegrationSteps(1000)
+	: nrPoints(1000), scatteringPair(2), nrIntegrationSteps(1000), m_fileconfig(nullptr)
 {
 }
 

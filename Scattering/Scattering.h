@@ -65,7 +65,7 @@ namespace Scattering
 		static std::vector<std::pair<double, double>> Compute(const Options& options)
 		{
 			std::vector<std::pair<double, double>> results;
-			results.reserve(options.nrPoints + 1);
+			results.reserve(options.nrPoints + 1ULL);
 
 
 			const ScatteringPair& pair = options.scatteringPairs[options.scatteringPair];
