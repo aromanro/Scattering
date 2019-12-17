@@ -69,7 +69,7 @@ namespace Scattering
 
 
 			const ScatteringPair& pair = options.scatteringPairs[options.scatteringPair];
-			::Scattering::LennardJonesPotential potential(pair.epsilon, pair.rho, pair.m1, pair.m2);
+			LennardJonesPotential potential(pair.epsilon, pair.rho, pair.m1, pair.m2);
 
 			const double rho = potential.getRho();
 			const double rho2 = rho * rho;
@@ -81,7 +81,7 @@ namespace Scattering
 
 			const unsigned int steps = static_cast<unsigned int>(ceil((maxr - startR) / h));
 
-			::Scattering::Numerov numerov(potential);
+			Numerov numerov(potential);
 
 			const double startVal = potential.SolutionForSmallR(startR);
 
