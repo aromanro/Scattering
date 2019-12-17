@@ -118,7 +118,7 @@ namespace Scattering
 					double u1;
 					double r2;
 					double u2;
-					std::tie(r1, u1, r2, u2) = numerov.SolveSchrodinger(startR, startVal, startR + h, nextVal, l, E, steps, Wavelength(E, potential.getConstant()) / 8.); // half of wavelenght does not seem to be sufficiently small, a quarter is already good
+					std::tie(r1, u1, r2, u2) = numerov.SolveSchrodinger(startR, startVal, startR + h, nextVal, l, E, steps, Wavelength(E, potential.getConstant()) / 8.); // half of wavelength does not seem to be sufficiently small, a quarter is already good
 
 					crossSection += PartialCrossSection(E, r1, r2, u1, u2, l, potential.getConstant());
 				}
