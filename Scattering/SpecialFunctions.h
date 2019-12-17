@@ -101,6 +101,19 @@ namespace SpecialFunctions
 #endif
 		}
 
+		template<typename T> static T jderiv(unsigned int l, T x)
+		{
+			return T(l) / x * j(l, x) - j(l + 1, x);
+			//return (j(l, x) - j(l, x - .0001)) / 0.0001;
+		}
+
+		template<typename T> static T nderiv(unsigned int l, T x)
+		{
+			return T(l) / x * n(l, x) - n(l + 1, x);
+			//return (n(l, x) - n(l, x - .0001)) / 0.0001;
+		}
+
+
 		/*
 		protected:
 			inline static double j0(double x) { return sin(x) / x; }

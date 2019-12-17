@@ -40,8 +40,21 @@ namespace Scattering
 			const double K = r1 * u2 / (r2 * u1);
 			const double k = sqrt(constant * E); // k = sqrt(2mE/hbar^2) where m is the reduced mass, 2m/hbar^2 is the passed constant - see the Lennard-Jones potential to see how it's calculated
 
+			// This is the way it's described in the Computational Physics book
+			// it works, but I changed it with using the approximate logarithmic derivative of the wavefunction and derivatives of the Bessel functions, below
+			
 			// 2.9a
-			return atan((K * SpecialFunctions::Bessel::j(l, k * r1) - SpecialFunctions::Bessel::j(l, k * r2)) / (K * SpecialFunctions::Bessel::n(l, k * r1) - SpecialFunctions::Bessel::n(l, k * r2)));
+			//return atan((K * SpecialFunctions::Bessel::j(l, k * r1) - SpecialFunctions::Bessel::j(l, k * r2)) / (K * SpecialFunctions::Bessel::n(l, k * r1) - SpecialFunctions::Bessel::n(l, k * r2)));
+
+			
+			// this also has another change needed compared with what's described in the book: instead of using Wavelength / 8 (see the commented code in the call for SolveSchrodinger), h is passed
+			// so r2 - r1 = h
+
+			// the -1 / r2 below comes from u = r R
+			// R'/R is needed. If you substitute R = u/r the -1 / r comes out nicely.
+			// R'/R = u'/u - 1/r
+			const double logDeriv = (u2 - u1) / ((r2 - r1) * u2)  - 1. / r2; // not a very good approximation, but it seems to work
+			return atan((SpecialFunctions::Bessel::jderiv(l, k * r2) * k - SpecialFunctions::Bessel::j(l, k * r2) * logDeriv) / (SpecialFunctions::Bessel::nderiv(l, k * r2) * k - SpecialFunctions::Bessel::n(l, k * r2) * logDeriv));
 		}
 
 		// 2 pi / k, k as above
@@ -118,7 +131,8 @@ namespace Scattering
 					double u1;
 					double r2;
 					double u2;
-					std::tie(r1, u1, r2, u2) = numerov.SolveSchrodinger(startR, startVal, startR + h, nextVal, l, E, steps, Wavelength(E, potential.getConstant()) / 8.); // half of wavelength does not seem to be sufficiently small, a quarter is already good
+					// the 'Wavelength' commented code is needed in case of using 2.9a formula in PhaseShift
+					std::tie(r1, u1, r2, u2) = numerov.SolveSchrodinger(startR, startVal, startR + h, nextVal, l, E, steps, h /*Wavelength(E, potential.getConstant()) / 8.*/); // half of wavelength does not seem to be sufficiently small, a quarter is already good
 
 					crossSection += PartialCrossSection(E, r1, r2, u1, u2, l, potential.getConstant());
 				}
