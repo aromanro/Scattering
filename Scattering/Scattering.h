@@ -53,7 +53,7 @@ namespace Scattering
 			// the -1 / r2 below comes from u = r R
 			// R'/R is needed. If you substitute R = u/r the -1 / r comes out nicely.
 			// R'/R = u'/u - 1/r
-			const double logDeriv = (u2 - u1) / ((r2 - r1) * u2)  - 1. / r2; // not a very good approximation, but it seems to work
+			const double logDeriv = (u2 - u1) / ((r2 - r1) * u2) - 1. / r2; // not a very good approximation, but it seems to work
 			return atan((SpecialFunctions::Bessel::jderiv(l, k * r2) * k - SpecialFunctions::Bessel::j(l, k * r2) * logDeriv) / (SpecialFunctions::Bessel::nderiv(l, k * r2) * k - SpecialFunctions::Bessel::n(l, k * r2) * logDeriv));
 		}
 
@@ -137,8 +137,8 @@ namespace Scattering
 					crossSection += PartialCrossSection(E, r1, r2, u1, u2, l, potential.getConstant());
 				}
 
-				// convert in units as in the book: meV and rho^2
-				results.emplace_back(std::make_pair(E * 27.211385 * 1000, crossSection / rho2));
+				// convert in units as in the book: meV and rho^2, a Hartree is 27.21138602 eV
+				results.emplace_back(std::make_pair(E * 27211.386, crossSection / rho2));
 			}
 
 			return results;
