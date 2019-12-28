@@ -101,13 +101,13 @@ namespace SpecialFunctions
 #endif
 		}
 
-		template<typename T> static T jderiv(unsigned int l, T x)
+		template<typename T> static T jderiv(unsigned int l, const T& x)
 		{
 			return T(l) / x * j(l, x) - j(l + 1, x);
 			//return (j(l, x) - j(l, x - .0001)) / 0.0001;
 		}
 
-		template<typename T> static T nderiv(unsigned int l, T x)
+		template<typename T> static T nderiv(unsigned int l, const T& x)
 		{
 			return T(l) / x * n(l, x) - n(l + 1, x);
 			//return (n(l, x) - n(l, x - .0001)) / 0.0001;
@@ -150,6 +150,11 @@ namespace SpecialFunctions
 
 			return p1;
 #endif
+		}
+
+		template<typename T> static T pderiv(unsigned int l, const T& x)
+		{
+			return -1 / sqrt(1 - x * x) * p(l, x);
 		}
 	};
 
