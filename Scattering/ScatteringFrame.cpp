@@ -69,7 +69,6 @@ ScatteringFrame::ScatteringFrame(const wxString& title, const wxPoint& pos, cons
 	std::vector<std::pair<double, double>> empty_results;
 	ConfigureVTK("", empty_results);
 	
-	currentOptions.Open();
 	currentOptions.Load();
 }
 
@@ -78,8 +77,6 @@ ScatteringFrame::~ScatteringFrame()
 {
 	DestroyVTK();
 	if (m_pVTKWindow) m_pVTKWindow->Delete();
-
-	currentOptions.Close();
 }
 
 void ScatteringFrame::ConstructVTK()
@@ -185,9 +182,7 @@ void ScatteringFrame::OnOptions(wxCommandEvent& /*event*/)
 	optionsFrame->options = currentOptions;
 	if (wxID_OK == optionsFrame->ShowModal())
 	{
-		currentOptions.Close();
 		currentOptions = optionsFrame->options;
-		currentOptions.Open();
 		currentOptions.Save();
 	}
 

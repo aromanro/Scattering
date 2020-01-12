@@ -43,9 +43,6 @@ public:
 	void Load();
 	void Save();
 
-	void Open();
-	void Close();
-
 	int nrPoints;
 	int scatteringPair;
 	int nrIntegrationSteps;
@@ -53,6 +50,9 @@ public:
 	static const std::vector<Scattering::ScatteringPair> scatteringPairs;
 
 protected:
+	void Open();
+	void Close();
+
 	wxFileConfig *m_fileconfig;
 };
 
