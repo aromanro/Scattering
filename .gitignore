@@ -1,0 +1,17 @@
+
+.vs/Scattering/v15/.suo
+*.db
+*.ipch
+.vs/Scattering/v16/.suo
+*.dat
+*.log
+Scattering/x64/Debug/Scattering.tlog/unsuccessfulbuild
+*.sarif
+*.obj
+*.tlog
+*.txt
+*.pdb
+*.exe
+*.lastcodeanalysissucceeded
+*.iobj
+*.ipdb
