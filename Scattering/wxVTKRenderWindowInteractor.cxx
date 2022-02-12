@@ -345,7 +345,6 @@ int wxVTKRenderWindowInteractor::CreateTimer(int WXUNUSED(timertype))
 	return 0;
 
   return 1;
-  
 }
 #if VTK_MAJOR_VERSION > 5 || (VTK_MAJOR_VERSION == 5 && VTK_MINOR_VERSION >= 2)
 //------------------------------------------------------------------
@@ -802,8 +801,7 @@ void wxVTKRenderWindowInteractor::OnMouseWheel(wxMouseEvent& event)
 	  //Send event to VTK
 	  InvokeEvent(vtkCommand::MouseWheelBackwardEvent, NULL);
 	}
-#endif
-	
+#endif	
 }
 
 //---------------------------------------------------------------------------

@@ -33,7 +33,6 @@ namespace Scattering
 	class Scattering
 	{
 	protected:
-
 		inline static double PhaseShift(double E, unsigned int l, double r1, double r2, double u1, double u2, double constant)
 		{
 			// 2.9b
@@ -74,7 +73,6 @@ namespace Scattering
 		}
 
 	public:
-
 		static std::vector<std::pair<double, double>> Compute(const Options& options)
 		{
 			std::vector<std::pair<double, double>> results;

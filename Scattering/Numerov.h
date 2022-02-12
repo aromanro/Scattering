@@ -36,14 +36,12 @@ namespace Scattering
 
 	protected:
 		const Potential& m_pot;
-
 	};
 
 	class Numerov
 	{
 	public:
 		Numerov(const Potential& pot) : function(pot) {}
-
 
 		inline std::tuple<double, double, double, double> SolveSchrodinger(double startPoint, double startValue, double nextPoint, double nextValue, unsigned int l, double E, unsigned int steps, double delta) const
 		{

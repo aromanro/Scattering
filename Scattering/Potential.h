@@ -26,11 +26,10 @@ namespace Scattering
 	class HarmonicPotential : public Potential
 	{
 	public:
-		virtual double operator()(double position) const override
+		double operator()(double position) const override
 		{
 			return position * position;
 		}
-
 	};
 
 
@@ -53,7 +52,7 @@ namespace Scattering
 		}
 
 
-		virtual double operator()(double position) const override
+		double operator()(double position) const override
 		{
 			const double rhor = m_rho / position;
 
@@ -79,8 +78,7 @@ namespace Scattering
 
 		inline double getRho() const { return m_rho; }
 
-		virtual double getConstant() const override { return Constant; }
-
+		double getConstant() const override { return Constant; }
 
 	protected:
 		double Constant;

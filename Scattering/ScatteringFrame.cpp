@@ -257,9 +257,7 @@ void ScatteringFrame::OnAbout(wxCommandEvent& /*event*/)
 
 	info.SetWebSite("https://github.com/aromanro/Scattering", "GitHub repository");
 
-
 	wxAboutBox(info, this);	
-
 }
 
 
