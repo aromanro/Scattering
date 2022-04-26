@@ -16,7 +16,7 @@
 wxDECLARE_APP(ScatteringApp);
 
 OptionsFrame::OptionsFrame(const wxString & title, wxWindow* parent)
-	   : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(400, 150))
+	   : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(250, 125))
 {
 	CreateControls();
 
@@ -28,11 +28,12 @@ void OptionsFrame::CreateControls()
 {
 	// box to contain them all
 	wxBoxSizer *vbox = new wxBoxSizer(wxVERTICAL);
+	vbox->AddSpacer(5);
 	SetSizer(vbox);
 
 	// box with margin to contain option controls
 	wxBoxSizer* boxSizer = new wxBoxSizer(wxVERTICAL);
-	vbox->Add(boxSizer, 0, wxALIGN_CENTER_HORIZONTAL| wxGROW | wxALL, 5);
+	vbox->Add(boxSizer, 0, wxGROW , 5);
 
 	// ******************************************************************
 	// now option controls
@@ -40,30 +41,31 @@ void OptionsFrame::CreateControls()
 	// nr points
 
 	wxBoxSizer* box = new wxBoxSizer(wxHORIZONTAL);
-	boxSizer->Add(box, 0, wxGROW|wxALL, 5);
+	boxSizer->Add(box, 0, wxGROW, 5);
 
-	wxStaticText* label = new wxStaticText(this, wxID_STATIC, "&Nr. Points:", wxDefaultPosition, wxSize(60, -1), wxALIGN_RIGHT);
-	box->Add(label, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+	wxStaticText* label = new wxStaticText(this, wxID_STATIC, "&Nr. Points:", wxDefaultPosition, wxSize(60, -1), wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+	box->Add(label, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 	
 	wxString str = wxString::Format(wxT("%i"), options.nrPoints);
 	wxTextCtrl* nrPointsCtrl = new wxTextCtrl(this, ID_NRPOINTS, str, wxDefaultPosition, wxSize(60, -1), 0);
-	box->Add(nrPointsCtrl, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+	box->Add(nrPointsCtrl, 0, wxALIGN_CENTER_VERTICAL, 5);
 
 
-	box->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5); // pushes to the right
+	box->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL, 5); // pushes to the right
 
 	// scattering pair
 
-	label = new wxStaticText(this, wxID_STATIC, "&Pair:", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
-	box->Add(label, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+	label = new wxStaticText(this, wxID_STATIC, "&Pair:", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+	box->Add(label, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 	
 	// with better Bessel functions still does not appear to work correctly for H2, so I leave this commented out for now
 	static const wxString materialStrings[] = { "H-Ne", "H-Ar", "H-Kr", "H-Xe" /*, "H2-Ar", "H2-Kr", "H2-Xe"*/ };
 
 	wxChoice* scatteringChoice = new wxChoice (this, ID_PAIR, wxDefaultPosition, wxSize(60, -1), WXSIZEOF(materialStrings), materialStrings, 0 );
 	scatteringChoice->SetSelection(options.scatteringPair);
-	box->Add(scatteringChoice, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+	box->Add(scatteringChoice, 0, wxALIGN_CENTER_VERTICAL, 5);
 
+	box->AddSpacer(5);
 
 	// ******************************************************************
 	// setting validators
@@ -79,9 +81,10 @@ void OptionsFrame::CreateControls()
 	// ******************************************************************
 
 	// divider line
+	boxSizer->AddSpacer(5);
 
 	wxStaticLine* line = new wxStaticLine(this, wxID_STATIC, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
-	boxSizer->Add(line, 0, wxGROW|wxALL, 5);
+	boxSizer->Add(line, 0, wxGROW, 5);
 
 	// bottom box with ok & cancel buttons
 
