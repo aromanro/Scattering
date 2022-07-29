@@ -1,6 +1,7 @@
 # Scattering
 Scattering on a Lennard-Jones potential, cross-section computation.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/22b5b7b01ecd4332b9a19728a7fc70f4)](https://app.codacy.com/gh/aromanro/Scattering?utm_source=github.com&utm_medium=referral&utm_content=aromanro/Scattering&utm_campaign=Badge_Grade_Settings)
 [![CodeFactor](https://www.codefactor.io/repository/github/aromanro/scattering/badge)](https://www.codefactor.io/repository/github/aromanro/scattering)
 
 The description is on: https://compphys.go.ro/quantum-scattering/
