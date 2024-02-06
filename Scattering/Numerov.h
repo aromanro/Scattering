@@ -23,7 +23,7 @@ namespace Scattering
 	class Function
 	{
 	public:
-		Function(const Potential& pot) : m_pot(pot) {}
+		explicit Function(const Potential& pot) : m_pot(pot) {}
 
 		// see 2.10 and 2.11, note that 2 m / hbar^2 is not 1, so this is not F, but 2 m / hbar^2 * F
 		// the constant is 2 m / hbar^2, where m is the reduced mass
@@ -41,7 +41,7 @@ namespace Scattering
 	class Numerov
 	{
 	public:
-		Numerov(const Potential& pot) : function(pot) {}
+		explicit Numerov(const Potential& pot) : function(pot) {}
 
 		inline std::tuple<double, double, double, double> SolveSchrodinger(double startPoint, double startValue, double nextPoint, double nextValue, unsigned int l, double E, unsigned int steps, double delta) const
 		{

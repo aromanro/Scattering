@@ -10,11 +10,6 @@ const std::vector<Scattering::ScatteringPair> Options::scatteringPairs = {
 	, {"H2-Ar", 6.3, 3.57, 2, 40}, {"H2-Kr", 7.19, 3.72, 2, 84}, {"H2-Xe", 8.1, 3.92, 2, 131} 
 };
 
-Options::Options()
-	: nrPoints(1000), scatteringPair(2), nrIntegrationSteps(1000), m_fileconfig(nullptr)
-{
-}
-
 
 void Options::Open()
 {

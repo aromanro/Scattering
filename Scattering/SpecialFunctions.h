@@ -154,7 +154,7 @@ namespace SpecialFunctions
 
 		template<typename T> static T pderiv(unsigned int l, const T& x)
 		{
-			return -1 / sqrt(1 - x * x) * p(l, x);
+			return T(-1.) / sqrt(1 - x * x) * p(l, x);
 		}
 	};
 

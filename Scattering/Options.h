@@ -12,8 +12,7 @@
 class Options
 {
 public:
-	Options();
-	
+	Options() = default;
 	~Options()
 	{
 		delete m_fileconfig;
@@ -39,20 +38,19 @@ public:
 		return *this;
 	}
 
-
 	void Load();
 	void Save();
 
-	int nrPoints;
-	int scatteringPair;
-	int nrIntegrationSteps;
+	int nrPoints = 1000;
+	int scatteringPair = 2;
+	int nrIntegrationSteps = 1000;
 
 	static const std::vector<Scattering::ScatteringPair> scatteringPairs;
 
-protected:
+private:
 	void Open();
 	void Close();
 
-	wxFileConfig *m_fileconfig;
+	wxFileConfig *m_fileconfig = nullptr;
 };
 

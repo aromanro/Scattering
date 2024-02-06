@@ -16,6 +16,7 @@ namespace Scattering
 	class Potential
 	{
 	public:
+		virtual ~Potential() = default;
 		virtual double operator()(double position) const = 0;
 		virtual double getConstant() const { return 1; }
 	};
@@ -80,7 +81,7 @@ namespace Scattering
 
 		double getConstant() const override { return Constant; }
 
-	protected:
+	private:
 		double Constant;
 
 		double m_epsilon;

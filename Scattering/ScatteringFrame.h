@@ -51,23 +51,23 @@ class ScatteringFrame : public wxFrame
 {
 public:
 	ScatteringFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
-	~ScatteringFrame();
+	~ScatteringFrame() override;
 
 
-	std::atomic_int runningThreads;
+	std::atomic_int runningThreads{ 0 };
 
 
 	Options currentOptions; // what's edited
 
 private:
-	wxVTKRenderWindowInteractor *m_pVTKWindow;
+	wxVTKRenderWindowInteractor *m_pVTKWindow = nullptr;
 
 	
 	// vtk classes
-	vtkRenderer     *pRenderer;
-	vtkContextView	*pContextView;
+	vtkRenderer     *pRenderer = nullptr;
+	vtkContextView	*pContextView = nullptr;
 
-	vtkChartXY *pChart;
+	vtkChartXY *pChart = nullptr;
 
 	wxTimer timer;
 
